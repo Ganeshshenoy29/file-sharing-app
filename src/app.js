@@ -1,5 +1,14 @@
 const express = require("express");
 const path = require("path");
+const fs = require("fs");
+// const path = require("path");
+
+
+// Ensure uploads folder exists (for Render Free tier)
+const uploadDir = path.join(__dirname, "../uploads");
+if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+}
 
 // routes
 const uploadRoute = require("./routes/upload");
