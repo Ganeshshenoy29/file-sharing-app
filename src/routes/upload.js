@@ -12,9 +12,12 @@ router.post("/", upload.single("file"), (req, res) => {
 
     const filename = req.file.filename;
 
+    // ✅ FIX: use environment-based base URL
+    const BASE_URL = process.env.BASE_URL || "http://localhost:3000";
+
     res.json({
         message: "File uploaded successfully",
-        downloadLink: `http://localhost:3000/file/${filename}`
+        downloadLink: `${BASE_URL}/file/${filename}`
     });
 });
 
